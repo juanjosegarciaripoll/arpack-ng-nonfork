@@ -68,6 +68,7 @@ jobs:
         run: sudo apt-get install -y gfortran gcc g++ openmpi-bin libopenmpi-dev libblas-dev liblapack-dev automake autoconf pkg-config libtool
       - name: Run job
         run: |
+		  chmod +x ./bootstrap
           ./bootstrap
           ./configure --enable-mpi --enable-icb
           make all
@@ -91,6 +92,7 @@ jobs:
         run: sudo apt-get install -y gfortran gcc g++ openmpi-bin libopenmpi-dev libblas-dev liblapack-dev automake autoconf pkg-config libtool
       - name: Run job
         run: |
+		  chmod +x ./bootstrap
           ./bootstrap
           ./configure
           bash ./tstAutotoolsInstall.sh
@@ -152,6 +154,7 @@ jobs:
         run: echo yes | sudo apt-get -y install intel-mkl libmkl-dev
       - name: Run job
         run: |
+		  chmod +x ./bootstrap
           ./bootstrap
           ./configure --enable-icb --with-blas=mkl_gf_ilp64 --with-lapack=mkl_gf_ilp64
           make all
@@ -256,6 +259,7 @@ jobs:
           brew list --formula -1 | while read line; do brew link --overwrite $line; done
       - name: Run job
         run: |
+		  chmod +x ./bootstrap
           ./bootstrap
           LIBS="-framework Accelerate" FFLAGS="-ff2c -fno-second-underscore" FCFLAGS="-ff2c -fno-second-underscore" ./configure --enable-icb --enable-mpi
           make all
