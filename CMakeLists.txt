@@ -414,8 +414,6 @@ if (MPI)
  	  $<INSTALL_INTERFACE:$<IF:$<BOOL:${BUILD_SHARED_LIBS}>,,MPI::MPI_Fortran>>
  	  $<BUILD_INTERFACE:MPI::MPI_Fortran>
  	)
-    target_link_libraries(parpack MPI::MPI_Fortran)
-    target_link_libraries(parpack arpack)
     set_target_properties(parpack PROPERTIES OUTPUT_NAME parpack${LIBSUFFIX}${ITF64SUFFIX})
     set_target_properties(parpack PROPERTIES VERSION 2.1.0)
     set_target_properties(parpack PROPERTIES SOVERSION 2)
